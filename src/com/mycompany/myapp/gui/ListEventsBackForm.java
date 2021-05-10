@@ -5,37 +5,44 @@
  */
 package com.mycompany.myapp.gui;
 
-import com.codename1.components.ImageViewer;
 import com.codename1.components.SpanLabel;
-import com.codename1.io.FileSystemStorage;
-import com.codename1.io.Log;
 import com.codename1.ui.Button;
 import com.codename1.ui.Command;
-import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
-import com.codename1.ui.layouts.BorderLayout;
+import com.codename1.ui.Tabs;
+import com.codename1.ui.Toolbar;
 import com.codename1.ui.layouts.BoxLayout;
-import com.codename1.ui.util.ImageIO;
+import com.codename1.ui.util.Resources;
 import com.mycompany.myapp.entities.Event;
-import com.mycompany.myapp.services.ServiceEvent;
 import java.util.ArrayList;
-import static java.util.Collections.list;
 import com.mycompany.myapp.services.ServiceEvent;
 import java.io.IOException;
-import java.io.OutputStream;
 
 /**
  *
  * @author bhk
  */
-public class ListEventsBackForm extends Form{
+public class ListEventsBackForm extends HomeForm{
 
-    public ListEventsBackForm(Form previous) throws IOException {
-    
+    public ListEventsBackForm(Form previous,Resources res)  throws IOException {
+        super("Newsfeed", BoxLayout.y());
+        Toolbar tb = new Toolbar(true);
+        setToolbar(tb);
+        getTitleArea().setUIID("Container");
+        setTitle("Newsfeed");
+        getContentPane().setScrollVisible(false);
+        
+        super.addSideMenu(res);
+        tb.addSearchCommand(e -> {});
+                Tabs swipe = new Tabs();
+
+          swipe.setUIID("Container");
+        swipe.getContentPane().setUIID("Container");
+        swipe.hideTabs();
         setTitle("List events");
         setLayout(BoxLayout.yCenter());
         ArrayList<Event> list;
