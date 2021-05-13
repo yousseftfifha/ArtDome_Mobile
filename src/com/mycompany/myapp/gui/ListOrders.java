@@ -19,6 +19,7 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
 import com.mycompany.myapp.entities.Orders;
 import com.mycompany.myapp.services.ServiceOrders;
+import com.mycompany.myapp.utils.UserHolder;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -58,14 +59,16 @@ public class ListOrders extends HomeForm{
                     line1.add(DueAmountLabel);
                     element.add(line1);
                     
-                    Label ps = new Label("We never show ID");
+                    Label ps = new Label("show Details");
                     ps.getAllStyles().set3DText(true, true);
                     ps.getAllStyles().setFgColor(ColorUtil.rgb(255, 0, 0));
 
                     element.add(ps);
+                    UserHolder holder = UserHolder.getInstance();
+                   
 
                     Button b = new Button("button");
-                    b.addActionListener(evt -> Dialog.show("Info",  " has " ));
+                    b.addActionListener(evt -> Dialog.show("Info",holder.getUser().getNom() ));
                     element.setLeadComponent(b);
                     list1.add(element);
             

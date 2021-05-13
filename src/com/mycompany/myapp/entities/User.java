@@ -17,6 +17,7 @@ public class User {
     private String prenom;
     private Date datenaissance;
     private String ville;
+    private String email;
     private int numero;
     private String image;
     private String roles;
@@ -27,12 +28,13 @@ public class User {
     public User() {
     }
 
-    public User(int ID, String nom, String prenom, Date datenaissance, String ville, int numero, String image, String roles, String Password, String sexe, int is_verified) {
+    public User(int ID, String nom, String prenom, Date datenaissance, String ville, String email, int numero, String image, String roles, String Password, String sexe, int is_verified) {
         this.ID = ID;
         this.nom = nom;
         this.prenom = prenom;
         this.datenaissance = datenaissance;
         this.ville = ville;
+        this.email = email;
         this.numero = numero;
         this.image = image;
         this.roles = roles;
@@ -41,14 +43,14 @@ public class User {
         this.is_verified = is_verified;
     }
 
-    public User(int ID, String nom, String prenom, Date datenaissance, String ville, int numero, String Password, String sexe) {
+    public User(int ID, String nom, String prenom, Date datenaissance, String ville, String email, int numero, String sexe) {
         this.ID = ID;
         this.nom = nom;
         this.prenom = prenom;
         this.datenaissance = datenaissance;
         this.ville = ville;
+        this.email = email;
         this.numero = numero;
-        this.Password = Password;
         this.sexe = sexe;
     }
 
@@ -90,6 +92,14 @@ public class User {
 
     public void setVille(String ville) {
         this.ville = ville;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getNumero() {
@@ -139,5 +149,11 @@ public class User {
     public void setIs_verified(int is_verified) {
         this.is_verified = is_verified;
     }
-    
+
+    @Override
+    public String toString() {
+        return "User{" + "ID=" + ID + ", nom=" + nom + ", prenom=" + prenom + ", datenaissance=" + datenaissance + ", ville=" + ville + ", email=" + email + ", numero=" + numero + ", image=" + image + ", roles=" + roles + ", Password=" + Password + ", sexe=" + sexe + ", is_verified=" + is_verified + '}';
+    }
+
+   
 }
