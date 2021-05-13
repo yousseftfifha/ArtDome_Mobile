@@ -59,17 +59,15 @@ public class ListOrders extends HomeForm{
                     line1.add(DueAmountLabel);
                     element.add(line1);
                     
-                    Label ps = new Label("show Details");
-                    ps.getAllStyles().set3DText(true, true);
-                    ps.getAllStyles().setFgColor(ColorUtil.rgb(255, 0, 0));
-
-                    element.add(ps);
+                
                     UserHolder holder = UserHolder.getInstance();
                    
 
-                    Button b = new Button("button");
-                    b.addActionListener(evt -> Dialog.show("Info",holder.getUser().getNom() ));
+                    Button b = new Button();
+                    b.setIcon(FontImage.createMaterial(FontImage.MATERIAL_DESCRIPTION, b.getUnselectedStyle()));
+                    b.addActionListener(evt -> Dialog.show("Info",holder.getUser().getNom(), "ok", "" ));
                     element.setLeadComponent(b);
+                    element.add(b);
                     list1.add(element);
             
            
