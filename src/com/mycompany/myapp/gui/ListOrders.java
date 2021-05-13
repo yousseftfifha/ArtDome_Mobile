@@ -60,6 +60,8 @@ public class ListOrders extends HomeForm{
                     line1.add(DueAmountLabel);
                     element.add(line1);
                     
+                  
+                    
                     Container element2 = new Container(BoxLayout.y());
                     Container line3 = new Container(BoxLayout.x());
                     SpanLabel StatusLabel = new SpanLabel("Status: " + "  " +  order.getStatus());
@@ -73,8 +75,8 @@ public class ListOrders extends HomeForm{
                     b.setIcon(FontImage.createMaterial(FontImage.MATERIAL_DESCRIPTION, b.getUnselectedStyle()));
                     b.addActionListener(evt -> Dialog.show("Info","information about User:"+holder.getUser().toString(), "ok", "" ));
                     element.setLeadComponent(b);
-                    list1.add(element2);
                     list1.add(element);
+                    list1.add(element2);
                     element.add(b);
 
 
