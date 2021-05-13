@@ -5,21 +5,19 @@
  */
 package com.mycompany.myapp.gui;
 
+import com.codename1.charts.util.ColorUtil;
 import com.codename1.components.SpanLabel;
 import com.codename1.ui.Button;
-import com.codename1.ui.Command;
+import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
-import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.Tabs;
 import com.codename1.ui.Toolbar;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
-import com.mycompany.myapp.entities.Event;
 import com.mycompany.myapp.entities.Orders;
-import com.mycompany.myapp.services.ServiceEvent;
 import com.mycompany.myapp.services.ServiceOrders;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -48,33 +46,33 @@ public class ListOrders extends HomeForm{
         setTitle("List Orders");
         setLayout(BoxLayout.yCenter());
         ArrayList<Orders> list;
-        list = new ArrayList<>();
         list = ServiceOrders.getInstance().getAllOrders();
+        Container list1 = new Container(BoxLayout.y());
+        for(Orders order:list){
+            //Creating custom container
+                    Container element = new Container(BoxLayout.y());
+                    Container line1 = new Container(BoxLayout.x());
+                    SpanLabel InnoNumberLabel = new SpanLabel("InnoNumber: " + "  " + Integer.toString((int) order.getInnoNumber()));
+                    Label DueAmountLabel = new Label("DueAmount: " + "  " + Float.toString(order.getDueAmount()));
+                    line1.add(InnoNumberLabel);
+                    line1.add(DueAmountLabel);
+                    element.add(line1);
+                    
+                    Label ps = new Label("We never show ID");
+                    ps.getAllStyles().set3DText(true, true);
+                    ps.getAllStyles().setFgColor(ColorUtil.rgb(255, 0, 0));
 
-        for ( Orders order : list) {
+                    element.add(ps);
+
+                    Button b = new Button("button");
+                    b.addActionListener(evt -> Dialog.show("Info",  " has " ));
+                    element.setLeadComponent(b);
+                    list1.add(element);
             
-            Label i = new Label();
            
-           /* String imageFile = FileSystemStorage.getInstance().getAppHomePath() + ev.getImage();
-        try(OutputStream os = FileSystemStorage.getInstance().openOutputStream(imageFile)) {
-            ImageIO.getImageIO().save(Image.createImage(500,500), os, ImageIO.FORMAT_JPEG, 1);
-        } catch(IOException err) {
-            Log.e(err);
-        }*/
-           
-                
-                SpanLabel spl = new SpanLabel("InnoNumber: " + "  " + order.getInnoNumber());
-                SpanLabel spl2 = new SpanLabel("DueAmount: " + "  " + order.getDueAmount());
-                SpanLabel spl3 = new SpanLabel("Status: " + "  " + order.getStatus());
-                SpanLabel spl4 = new SpanLabel("User: " + "  " + order.getIDUser());
-
-             //c1.add(BorderLayout.CENTER,i);
-             //c1.add(BorderLayout.CENTER,spl);
-             
-             //c2.addAll(spl2,spl3,spl4,spl5);
-              
-        addAll(i,spl,spl2,spl3)
-                ;}
+        }
+                list1.setScrollableY(true);
+                this.add(list1);
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
     }
     
