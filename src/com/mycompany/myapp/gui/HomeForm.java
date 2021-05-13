@@ -20,7 +20,10 @@ import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.layouts.Layout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
+import com.mycompany.myapp.entities.User;
+import com.mycompany.myapp.utils.UserHolder;
 import java.io.IOException;
+import java.util.Date;
 
 
 /**
@@ -126,7 +129,11 @@ public class HomeForm extends Form {
         });
         
         addAll(btnAddEvent, btnListEvents,btnListEventsB,btnListOrders);
+                    Date d=new Date(2000-02-24);
+                  
+                    User u = new User (14,"tfifha","youssef",d,"ezzahra","youssef.tfifha@esprit.tn",20245989,"Homme");
+                    UserHolder holder = UserHolder.getInstance();
+                    holder.setUser(u); 
 
     }
-
 }

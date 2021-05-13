@@ -19,8 +19,10 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
 import com.mycompany.myapp.entities.Orders;
 import com.mycompany.myapp.services.ServiceOrders;
+import com.mycompany.myapp.utils.UserHolder;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -58,16 +60,26 @@ public class ListOrders extends HomeForm{
                     line1.add(DueAmountLabel);
                     element.add(line1);
                     
-                    Label ps = new Label("We never show ID");
-                    ps.getAllStyles().set3DText(true, true);
-                    ps.getAllStyles().setFgColor(ColorUtil.rgb(255, 0, 0));
+                  
+                    
+                    Container element2 = new Container(BoxLayout.y());
+                    Container line3 = new Container(BoxLayout.x());
+                    SpanLabel StatusLabel = new SpanLabel("Status: " + "  " +  order.getStatus());
+                    line3.add(StatusLabel);
+                    element2.add(line3);
+                
+                    UserHolder holder = UserHolder.getInstance();
+                   
 
-                    element.add(ps);
-
-                    Button b = new Button("button");
-                    b.addActionListener(evt -> Dialog.show("Info",  " has " ));
+                    Button b = new Button();
+                    b.setIcon(FontImage.createMaterial(FontImage.MATERIAL_DESCRIPTION, b.getUnselectedStyle()));
+                    b.addActionListener(evt -> Dialog.show("Info","information about User:"+holder.getUser().toString(), "ok", "" ));
                     element.setLeadComponent(b);
                     list1.add(element);
+                    list1.add(element2);
+                    element.add(b);
+
+
             
            
         }
