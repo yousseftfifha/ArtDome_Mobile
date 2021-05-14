@@ -86,7 +86,8 @@ public class ServiceOrders {
                 float DueAmount = Float.parseFloat(obj.get("dueamount").toString());
                 orderss.setDueAmount((float)DueAmount);
                 orderss.setStatus(obj.get("status").toString());
-                orderss.setInnoNumber((double) obj.get("innonumber"));
+                double i=Double.parseDouble(obj.get("innonumber").toString());
+                orderss.setInnoNumber(i);
                 orders.add(orderss);
             }
             

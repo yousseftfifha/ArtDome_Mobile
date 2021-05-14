@@ -36,7 +36,7 @@ import com.mycompany.myapp.services.ServiceOrders;
 import com.mycompany.myapp.utils.UserHolder;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
+
 
 /**
  *
@@ -108,7 +108,7 @@ public class ListOrders extends HomeForm{
             //Creating custom container
                     Container element = new Container(BoxLayout.y());
                     Container line1 = new Container(BoxLayout.x());
-                    SpanLabel InnoNumberLabel = new SpanLabel("InnoNumber: " + "  " + Integer.toString((int) order.getInnoNumber()));
+                    SpanLabel InnoNumberLabel = new SpanLabel("InnoNumber: " + "  " + order.getInnoNumber());
                     Label DueAmountLabel = new Label("DueAmount: " + "  " + Float.toString(order.getDueAmount()));
                     line1.add(InnoNumberLabel);
                     line1.add(DueAmountLabel);
@@ -126,7 +126,13 @@ public class ListOrders extends HomeForm{
 
                     Button b = new Button();
                     b.setIcon(FontImage.createMaterial(FontImage.MATERIAL_DESCRIPTION, b.getUnselectedStyle()));
-                    b.addActionListener(evt -> Dialog.show("Info","information about User:"+holder.getUser().toString(), "ok", "" ));
+                    b.addActionListener(evt -> {
+                        try {
+                            new ListPendingOrders(current,res,order.getInnoNumber()).show();
+                        } catch (IOException ex) {
+                        }
+                    });
+                  
                     element.setLeadComponent(b);
                     list1.add(element);
                     list1.add(element2);
