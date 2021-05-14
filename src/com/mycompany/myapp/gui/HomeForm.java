@@ -64,7 +64,7 @@ public class HomeForm extends Form {
     protected void addSideMenu(Resources res) {
         Toolbar tb = getToolbar();
        
-        Image img = res.getImage("profile-background.jpg");
+        Image img = res.getImage("faza.jpg");
         if(img.getHeight() > Display.getInstance().getDisplayHeight() / 3) {
             img = img.scaledHeight(Display.getInstance().getDisplayHeight() / 3);
         }
@@ -85,7 +85,12 @@ public class HomeForm extends Form {
             } catch (IOException ex) {
             }
         });
-
+  tb.addMaterialCommandToSideMenu("Events", FontImage.MATERIAL_LIST, e -> {
+            try {
+                new ListEventsForm(this.current,res).show();
+            } catch (IOException ex) {
+            }
+        });
        
     }
     public HomeForm(Resources res) {
@@ -103,7 +108,7 @@ public class HomeForm extends Form {
         btnListEvents.addActionListener(e -> {
             
             try {
-                new ListEventsForm(current).show();
+                new ListEventsForm(current,res).show();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

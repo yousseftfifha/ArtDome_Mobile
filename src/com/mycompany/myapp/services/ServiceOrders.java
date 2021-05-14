@@ -102,8 +102,8 @@ public class ServiceOrders {
         return orders;
     }
     
-    public ArrayList<Orders> getAllOrders(){
-        String url = Statics.BASE_URL+"/listOrders";
+    public ArrayList<Orders> getAllOrders(int id){
+        String url = Statics.BASE_URL+"/showOrders/"+id;
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -116,6 +116,4 @@ public class ServiceOrders {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return orders;
     }
-    
-    
 }
