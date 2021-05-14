@@ -29,11 +29,9 @@ public class HomeForm extends Form {
         setLayout(BoxLayout.y());
 
         add(new Label("Choose an option"));
-        Button btnAddEvent = new Button("Add Event");
-        Button btnListEvents = new Button("List Events");
-        Button btnListEventsB = new Button("List Events Back");
+        Button btnListEvents = new Button("Events");
 
-        btnAddEvent.addActionListener(e -> new AddEventForm(current).show());
+       
         btnListEvents.addActionListener(e -> {
             
             try {
@@ -43,18 +41,10 @@ public class HomeForm extends Form {
             }
             
         });
-        btnListEventsB.addActionListener(e -> {
-            
-            try {
-                new ListEventsBackForm(current).show();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-            
-        });
+       
         
         
-        addAll(btnAddEvent, btnListEvents,btnListEventsB);
+        addAll(btnListEvents);
 
     }
 

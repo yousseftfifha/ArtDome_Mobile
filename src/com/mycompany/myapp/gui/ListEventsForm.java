@@ -19,6 +19,7 @@ import com.codename1.ui.Component;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
+import com.codename1.ui.EncodedImage;
 import com.codename1.ui.Font;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
@@ -26,11 +27,13 @@ import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.Slider;
 import com.codename1.ui.TextField;
+import com.codename1.ui.URLImage;
 import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.Border;
 import com.codename1.ui.plaf.Style;
+import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.ImageIO;
 import com.codename1.ui.util.Resources;
 import com.mycompany.myapp.entities.Event;
@@ -55,17 +58,18 @@ public class ListEventsForm extends Form{
         list = new ArrayList<>();
         list = ServiceEvent.getInstance().getAllEvents();
         for ( Event ev : list) {
+              
+           Image img;
+           EncodedImage enc = EncodedImage.create("/faza.jpg");
+           enc.scale(570,620);
+           String url="http://127.0.0.1:8282/ArtDomeWeb/public/pi/"+ev.getImage();
+           img =URLImage.createToStorage(enc, url, url);
+           img.scaledHeight(1);
+           img.fill(570,620);
+           ImageViewer imgv;
+           imgv= new ImageViewer(img);
+           //Image img1 = Image.createImage(imageFile+ev.getImage());
             
-            Label i = new Label();
-           
-           /* String imageFile = FileSystemStorage.getInstance().getAppHomePath() + ev.getImage();
-        try(OutputStream os = FileSystemStorage.getInstance().openOutputStream(imageFile)) {
-            ImageIO.getImageIO().save(Image.createImage(500,500), os, ImageIO.FORMAT_JPEG, 1);
-        } catch(IOException err) {
-            Log.e(err);
-        }*/
-            Image img1 = Image.createImage("/"+ev.getImage());
-            i.setIcon(img1);
                 
                 SpanLabel spl = new SpanLabel("Event name: " + "  " + ev.getNomEvent());
                 SpanLabel spl2 = new SpanLabel("Theme: " + "  " + ev.getThemeEvent());
@@ -88,7 +92,7 @@ public class ListEventsForm extends Form{
                 partager.addActionListener((evtt)->{
                 Display.getInstance().execute("https://www.facebook.com/sharer/sharer.php/?u=127.0.0.1:8000/event/"+ev.getCodeEvent());
                  });
-        addAll(i,spl,spl2,spl3,spl5,sup,partager);
+        addAll(imgv,spl,spl2,spl3,spl5,sup,partager);
         
         }
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
@@ -117,40 +121,40 @@ public class ListEventsForm extends Form{
     }
 }, 4);*/
     }
-    protected void showOtherForm(Resources res) {
-    }
-    
-     private void initStarRankStyle(Style s, Image star) {
-    s.setBackgroundType(Style.BACKGROUND_IMAGE_TILE_BOTH);
-    s.setBorder(Border.createEmpty());
-    s.setBgImage(star);
-    s.setBgTransparency(0);
-}
-
-    private Slider createStarRankSlider() {
-    Slider starRank = new Slider();
-    starRank.setEditable(true);
-    starRank.setMinValue(0);
-    starRank.setMaxValue(6);
-    Font fnt = Font.createTrueTypeFont("native:MainLight", "native:MainLight").
-            derive(Display.getInstance().convertToPixels(5, true), Font.STYLE_PLAIN);
-    Style s = new Style(0xffff33, 0, fnt, (byte)0);
-    Image fullStar = FontImage.createMaterial(FontImage.MATERIAL_STAR, s).toImage();
-    s.setOpacity(100);
-    s.setFgColor(0);
-    Image emptyStar = FontImage.createMaterial(FontImage.MATERIAL_STAR, s).toImage();
-    initStarRankStyle(starRank.getSliderEmptySelectedStyle(), emptyStar);
-    initStarRankStyle(starRank.getSliderEmptyUnselectedStyle(), emptyStar);
-    initStarRankStyle(starRank.getSliderFullSelectedStyle(), fullStar);
-    initStarRankStyle(starRank.getSliderFullUnselectedStyle(), fullStar);
-    starRank.setPreferredSize(new Dimension(fullStar.getWidth() * 5, fullStar.getHeight()));
-    starRank.addDataChangedListener((j,t)->{
-    System.out.println(starRank.getProgress()); 
-    Dialog.show("Success", "You successefully eveluated this event ", new Command("OK"));
-    starRank.setEnabled(false);
-    });     
-    
-    return starRank;
-}
+//    protected void showOtherForm(Resources res) {
+//    }
+//    
+//     private void initStarRankStyle(Style s, Image star) {
+//    s.setBackgroundType(Style.BACKGROUND_IMAGE_TILE_BOTH);
+//    s.setBorder(Border.createEmpty());
+//    s.setBgImage(star);
+//    s.setBgTransparency(0);
+//}
+//
+//    private Slider createStarRankSlider() {
+//    Slider starRank = new Slider();
+//    starRank.setEditable(true);
+//    starRank.setMinValue(0);
+//    starRank.setMaxValue(6);
+//    Font fnt = Font.createTrueTypeFont("native:MainLight", "native:MainLight").
+//            derive(Display.getInstance().convertToPixels(5, true), Font.STYLE_PLAIN);
+//    Style s = new Style(0xffff33, 0, fnt, (byte)0);
+//    Image fullStar = FontImage.createMaterial(FontImage.MATERIAL_STAR, s).toImage();
+//    s.setOpacity(100);
+//    s.setFgColor(0);
+//    Image emptyStar = FontImage.createMaterial(FontImage.MATERIAL_STAR, s).toImage();
+//    initStarRankStyle(starRank.getSliderEmptySelectedStyle(), emptyStar);
+//    initStarRankStyle(starRank.getSliderEmptyUnselectedStyle(), emptyStar);
+//    initStarRankStyle(starRank.getSliderFullSelectedStyle(), fullStar);
+//    initStarRankStyle(starRank.getSliderFullUnselectedStyle(), fullStar);
+//    starRank.setPreferredSize(new Dimension(fullStar.getWidth() * 5, fullStar.getHeight()));
+//    starRank.addDataChangedListener((j,t)->{
+//    System.out.println(starRank.getProgress()); 
+//    Dialog.show("Success", "You successefully eveluated this event ", new Command("OK"));
+//    starRank.setEnabled(false);
+//    });     
+//    
+//    return starRank;
+//}
     
 }
