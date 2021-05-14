@@ -118,6 +118,7 @@ public class ListPendingOrders extends HomeForm{
                     Container element2 = new Container(BoxLayout.y());
                     Container line3 = new Container(BoxLayout.x());
                     SpanLabel StatusLabel = new SpanLabel("Status: " + "  " +  pendingorder.getStatus());
+
                     line3.add(StatusLabel);
                     element2.add(line3);
                 
@@ -132,7 +133,6 @@ public class ListPendingOrders extends HomeForm{
                     list1.add(b);
 
 
-            
            
         }
                 list1.setScrollableY(true);

@@ -11,6 +11,7 @@ import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.events.ActionListener;
+import com.mycompany.myapp.entities.Oeuvre;
 import com.mycompany.myapp.entities.PendingOrders;
 import com.mycompany.myapp.utils.Statics;
 import java.io.IOException;
@@ -84,7 +85,7 @@ public class ServicePendingOrders {
                 pendingorderss.setInnonumber(i);     
                 float q = Float.parseFloat(obj.get("quantity").toString());
                 pendingorderss.setQuantity((int)q);
-                pendingorders.add(pendingorderss);
+                               pendingorders.add(pendingorderss);
             }
             
             
