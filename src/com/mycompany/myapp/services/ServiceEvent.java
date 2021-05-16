@@ -135,9 +135,9 @@ public class ServiceEvent {
 
     }
         
-         public ArrayList<Event> rechercheEvent(){
-         Event ev = new Event();
-         String url = Statics.BASE_URL + "/searchEvent/"+ev.getNomEvent();
+         public ArrayList<Event> searchEvent(String name){
+         //Event ev = new Event();
+         String url = Statics.BASE_URL + "/searchEvent/"+name;
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {

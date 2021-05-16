@@ -28,6 +28,8 @@ import com.codename1.ui.Label;
 import com.codename1.ui.Slider;
 import com.codename1.ui.TextField;
 import com.codename1.ui.URLImage;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
@@ -43,24 +45,47 @@ import static java.util.Collections.list;
 import com.mycompany.myapp.services.ServiceEvent;
 import java.io.IOException;
 import java.io.OutputStream;
-
 /**
  *
  * @author bhk
  */
 public class ListEventsForm extends Form{
 
-    public ListEventsForm(Form previous) throws IOException {
-    
+    public ListEventsForm(Form previous ) throws IOException {
+        Form current;
+        current=this;
+        TextField search= new TextField("", "Search by name");
+        Button btnsearch= new Button("Search");
+        addAll(search,btnsearch);
         setTitle("List events");
         setLayout(BoxLayout.yCenter());
         ArrayList<Event> list;
         list = new ArrayList<>();
+         btnsearch.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                if ((search.getText().length()==0))
+                 Dialog.show("Alert", "Please type an event name", new Command("OK"));
+                
+                else
+                { 
+                    
+                    try {
+                        new SearchEventForm(current,search.getText()).show();
+                    } catch (IOException ex) {
+                    }
+                   
+                }
+                
+                
+            }
+        });
         list = ServiceEvent.getInstance().getAllEvents();
         for ( Event ev : list) {
               
            Image img;
-           EncodedImage enc = EncodedImage.create("/faza.jpg");
+           EncodedImage enc;
+           enc = EncodedImage.create("/faza.jpg");
            enc.scale(570,620);
            String url="http://127.0.0.1:8282/ArtDomeWeb/public/pi/"+ev.getImage();
            img =URLImage.createToStorage(enc, url, url);
@@ -92,7 +117,7 @@ public class ListEventsForm extends Form{
                 partager.addActionListener((evtt)->{
                 Display.getInstance().execute("https://www.facebook.com/sharer/sharer.php/?u=127.0.0.1:8000/event/"+ev.getCodeEvent());
                  });
-        addAll(imgv,spl,spl2,spl3,spl5,sup,partager);
+       addAll(imgv,spl,spl2,spl3,spl5,sup,partager);
         
         }
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
