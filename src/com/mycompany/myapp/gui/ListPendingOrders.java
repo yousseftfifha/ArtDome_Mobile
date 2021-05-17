@@ -118,9 +118,14 @@ public class ListPendingOrders extends HomeForm{
                     Container element2 = new Container(BoxLayout.y());
                     Container line3 = new Container(BoxLayout.x());
                     SpanLabel StatusLabel = new SpanLabel("Status: " + "  " +  pendingorder.getStatus());
-
                     line3.add(StatusLabel);
                     element2.add(line3);
+                
+                    Container element3 = new Container(BoxLayout.y());
+                    Container line4 = new Container(BoxLayout.x());
+                    SpanLabel ArtworkLabel = new SpanLabel("Artwork: " + "  " +  pendingorder.getOeuvreID());
+                    line4.add(ArtworkLabel);
+                    element3.add(line4);
                 
                    
 
@@ -128,8 +133,11 @@ public class ListPendingOrders extends HomeForm{
                     b.setIcon(FontImage.createMaterial(FontImage.MATERIAL_DESCRIPTION, b.getUnselectedStyle()));
                     b.addActionListener(evt -> Dialog.show("Info","information about User:"+holder.getUser().toString(), "ok", "" ));
                     element.setLeadComponent(b);
+                  
                     list1.add(element);
                     list1.add(element2);
+                    list1.add(element3);
+
                     list1.add(b);
 
 

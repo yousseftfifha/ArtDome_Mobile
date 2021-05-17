@@ -83,6 +83,8 @@ public class ServiceOrders {
             for(Map<String,Object> obj : list){
                 //Création des tâches et récupération de leurs données
                 Orders orderss = new Orders();
+                float id = Float.parseFloat(obj.get("orderid").toString());
+                orderss.setOrderId((int)id);
                 float DueAmount = Float.parseFloat(obj.get("dueamount").toString());
                 orderss.setDueAmount((float)DueAmount);
                 orderss.setStatus(obj.get("status").toString());
@@ -116,5 +118,16 @@ public class ServiceOrders {
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
         return orders;
+    }
+      public void Cancel(int id) {
+        ConnectionRequest con = new ConnectionRequest();
+        con.setUrl(Statics.BASE_URL+"/"+id+"/CancelMobile");
+        con.setPost(false);
+        con.addResponseListener((evt) -> {
+            System.out.println(con.getResponseData());
+
+        });
+        NetworkManager.getInstance().addToQueueAndWait(con);
+
     }
 }

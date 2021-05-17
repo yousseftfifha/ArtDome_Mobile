@@ -11,6 +11,9 @@ import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.events.ActionListener;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.mycompany.myapp.entities.Oeuvre;
 import com.mycompany.myapp.entities.PendingOrders;
 import com.mycompany.myapp.utils.Statics;
@@ -18,6 +21,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  *
@@ -75,17 +80,28 @@ public class ServicePendingOrders {
             sa valeur est une liste d'objets Json, donc une liste de Map
             */
             List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
-            
             //Parcourir la liste des tâches Json
             for(Map<String,Object> obj : list){
                 //Création des tâches et récupération de leurs données
                 PendingOrders pendingorderss = new PendingOrders();
+                 
                 pendingorderss.setStatus(obj.get("status").toString());
                 double i=Double.parseDouble(obj.get("innonumber").toString());
                 pendingorderss.setInnonumber(i);     
                 float q = Float.parseFloat(obj.get("quantity").toString());
                 pendingorderss.setQuantity((int)q);
-                               pendingorders.add(pendingorderss);
+                String artwork=obj.get("oeuvreid").toString();
+                pendingorderss.setOeuvreID(artwork);
+        /*  JSONObject jo = new JSONObject(jsonText);
+               JSONObject joParams = jo.getJSONObject("nomoeuvre");
+                System.out.println(joParams);
+                                
+
+             /*   Gson g = new Gson();
+                Oeuvre p = g.fromJson(artwork, Oeuvre.class);
+                System.out.println(p);*/
+
+                pendingorders.add(pendingorderss);
             }
             
             

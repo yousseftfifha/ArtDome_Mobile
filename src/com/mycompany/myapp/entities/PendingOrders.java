@@ -13,14 +13,14 @@ public class PendingOrders {
     private int ID_PendingOrder;
     private User IDUser;
     private double innonumber;
-    private Oeuvre OeuvreID;
+    private String OeuvreID;
     private int Quantity;
     private String Status;
 
     public PendingOrders() {
     }
 
-    public PendingOrders(int ID_PendingOrder, User IDUser, double innonumber, Oeuvre OeuvreID, int Quantity, String Status) {
+    public PendingOrders(int ID_PendingOrder, User IDUser, double innonumber, String OeuvreID, int Quantity, String Status) {
         this.ID_PendingOrder = ID_PendingOrder;
         this.IDUser = IDUser;
         this.innonumber = innonumber;
@@ -53,11 +53,11 @@ public class PendingOrders {
         this.innonumber = innonumber;
     }
 
-    public Oeuvre getOeuvreID() {
+    public String getOeuvreID() {
         return OeuvreID;
     }
 
-    public void setOeuvreID(Oeuvre OeuvreID) {
+    public void setOeuvreID(String OeuvreID) {
         this.OeuvreID = OeuvreID;
     }
 
@@ -81,5 +81,6 @@ public class PendingOrders {
     public String toString() {
         return "PendingOrders{" + "ID_PendingOrder=" + ID_PendingOrder + ", IDUser=" + IDUser + ", innonumber=" + innonumber + ", OeuvreID=" + OeuvreID + ", Quantity=" + Quantity + ", Status=" + Status + '}';
     }
+
     
 }

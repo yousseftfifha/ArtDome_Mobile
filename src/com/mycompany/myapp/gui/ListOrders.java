@@ -10,6 +10,7 @@ import com.codename1.components.ScaleImageLabel;
 import com.codename1.components.SpanLabel;
 import com.codename1.ui.Button;
 import com.codename1.ui.ButtonGroup;
+import com.codename1.ui.Command;
 import com.codename1.ui.Component;
 import static com.codename1.ui.Component.BOTTOM;
 import static com.codename1.ui.Component.CENTER;
@@ -132,11 +133,19 @@ public class ListOrders extends HomeForm{
                         } catch (IOException ex) {
                         }
                     });
-                  
+                    Button sup = new Button("Delete");
+            
+                sup.addActionListener((evt) -> {
+                   ServiceOrders.getInstance().Cancel(order.getOrderId());
+                    System.out.println("Order Cancelled successfully");
+                    Dialog.show("Alert", "Cancel Order ?", new Command("OK"));
+                    Dialog.show("Success", "Order Cancelled  successfully", new Command("OK"));
+                    });
                     element.setLeadComponent(b);
                     list1.add(element);
                     list1.add(element2);
                     list1.add(b);
+                    list1.add(sup);
 
 
             
