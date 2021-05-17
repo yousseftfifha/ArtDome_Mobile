@@ -8,6 +8,7 @@ package com.mycompany.myapp.gui;
 import com.codename1.charts.util.ColorUtil;
 import com.codename1.components.ScaleImageLabel;
 import com.codename1.components.SpanLabel;
+import com.codename1.messaging.Message;
 import com.codename1.ui.Button;
 import com.codename1.ui.ButtonGroup;
 import com.codename1.ui.Command;
@@ -147,6 +148,8 @@ public class ListOrders extends HomeForm{
                     list1.add(b);
                     list1.add(sup);
 
+Message m = new Message("Body of message");
+Display.getInstance().sendMessage(new String[] {"youssef.tfifha@esprit.tn"}, "Subject of message", m);
 
             
            
