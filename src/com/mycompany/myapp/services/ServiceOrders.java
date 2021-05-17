@@ -83,10 +83,13 @@ public class ServiceOrders {
             for(Map<String,Object> obj : list){
                 //Création des tâches et récupération de leurs données
                 Orders orderss = new Orders();
+                float id = Float.parseFloat(obj.get("orderid").toString());
+                orderss.setOrderId((int)id);
                 float DueAmount = Float.parseFloat(obj.get("dueamount").toString());
                 orderss.setDueAmount((float)DueAmount);
                 orderss.setStatus(obj.get("status").toString());
-                orderss.setInnoNumber((double) obj.get("innonumber"));
+                double i=Double.parseDouble(obj.get("innonumber").toString());
+                orderss.setInnoNumber(i);
                 orders.add(orderss);
             }
             
@@ -102,8 +105,8 @@ public class ServiceOrders {
         return orders;
     }
     
-    public ArrayList<Orders> getAllOrders(){
-        String url = Statics.BASE_URL+"/listOrders";
+    public ArrayList<Orders> getAllOrders(int id){
+        String url = Statics.BASE_URL+"/showOrders/"+id;
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -116,6 +119,16 @@ public class ServiceOrders {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return orders;
     }
-    
+      public void Cancel(int id) {
+        ConnectionRequest con = new ConnectionRequest();
+        con.setUrl(Statics.BASE_URL+"/"+id+"/CancelMobile");
+        con.setPost(false);
+        con.addResponseListener((evt) -> {
+            System.out.println(con.getResponseData());
+
+        });
+        NetworkManager.getInstance().addToQueueAndWait(con);
+
+    }
     
 }

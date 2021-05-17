@@ -21,6 +21,7 @@ import com.codename1.ui.Label;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.ImageIO;
+import com.codename1.ui.util.Resources;
 import com.mycompany.myapp.entities.Event;
 import com.mycompany.myapp.services.ServiceEvent;
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ import java.io.OutputStream;
  */
 public class ListEventsForm extends Form{
 
-    public ListEventsForm(Form previous) throws IOException {
+    public ListEventsForm(Form previous,Resources res) throws IOException {
     
         setTitle("List events");
         setLayout(BoxLayout.yCenter());
