@@ -153,4 +153,22 @@ public class ServiceExposition {
         NetworkManager.getInstance().addToQueueAndWait(con);
 
     }
+        
+        
+        
+                 public ArrayList<Exposition> searchExpo(Integer code){
+         //Event ev = new Event();
+         String url = Statics.BASE_URL + "/searchExpo/"+code;
+        req.setUrl(url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                expos = parseExpos(new String(req.getResponseData()));
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return expos;
+    }
 }

@@ -18,6 +18,7 @@ import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
+import com.codename1.ui.TextField;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.ImageIO;
@@ -30,6 +31,8 @@ import com.mycompany.myapp.services.ServiceEvent;
 import com.mycompany.myapp.services.ServiceExposition;
 import java.io.IOException;
 import java.io.OutputStream;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.events.ActionListener;
 
 /**
  *
@@ -38,11 +41,40 @@ import java.io.OutputStream;
 public class ListExposForm extends Form{
 
     public ListExposForm(Form previous) throws IOException {
+                Form current;
+        current=this;
+        TextField search= new TextField("", "Search...");
+        Button btnsearch= new Button("Search");
+        addAll(search,btnsearch);
     
         setTitle("List expos");
         setLayout(BoxLayout.yCenter());
         ArrayList<Exposition> list;
         list = new ArrayList<>();
+        
+        
+                 btnsearch.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                if ((search.getText().length()==0))
+                 Dialog.show("Alert", "Please type an exposition code", new Command("OK"));
+
+                else
+                { 
+
+                    try {
+                        new SearchExpoForm(current,Integer.valueOf(search.getText())).show();
+                    } catch (IOException ex) {
+                    }
+
+                }
+
+
+            }
+        });
+        
+        
+        
         list = ServiceExposition.getInstance().getAllExpos();
 
         for ( Exposition ev : list) {
