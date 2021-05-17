@@ -156,9 +156,9 @@ public class ServiceExposition {
         
         
         
-                 public ArrayList<Exposition> searchExpo(Integer code){
+                 public ArrayList<Exposition> searchExpo(String name){
          //Event ev = new Event();
-         String url = Statics.BASE_URL + "/searchExpo/"+code;
+         String url = Statics.BASE_URL + "/searchExpo/"+name;
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {

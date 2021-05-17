@@ -28,11 +28,11 @@ import java.util.ArrayList;
  * @author HP
  */
 public class SearchExpoForm extends Form {
-     public SearchExpoForm(Form previous, Integer code) throws IOException {
+     public SearchExpoForm(Form previous, String name) throws IOException {
          setLayout(BoxLayout.yCenter());
           ArrayList<Exposition> list;
         list = new ArrayList<>();
-                    list =ServiceExposition.getInstance().searchExpo(code);
+                    list =ServiceExposition.getInstance().searchExpo(name);
                     for ( Exposition ev : list) {
 
         

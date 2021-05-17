@@ -63,7 +63,7 @@ public class ListExposForm extends Form{
                 { 
 
                     try {
-                        new SearchExpoForm(current,Integer.valueOf(search.getText())).show();
+                        new SearchExpoForm(current,search.getText()).show();
                     } catch (IOException ex) {
                     }
 
