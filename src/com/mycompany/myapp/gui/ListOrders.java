@@ -55,7 +55,7 @@ public class ListOrders extends HomeForm{
         getContentPane().setScrollVisible(false);
         
         super.addSideMenu(res);
-        tb.addSearchCommand(e -> {});
+        //tb.addSearchCommand(e -> {});
                 Tabs swipe = new Tabs();
                         Label spacer1 = new Label();
         Label spacer2 = new Label();
