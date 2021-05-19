@@ -97,7 +97,6 @@ public class HomeForm extends Form {
         current = this; //Récupération de l'interface(Form) en cours
         setTitle("Home");
         setLayout(BoxLayout.y());
-
         add(new Label("Choose an option"));
        
         Button btnListEvents = new Button("Events");
