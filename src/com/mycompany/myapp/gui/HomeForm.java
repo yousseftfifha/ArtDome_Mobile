@@ -102,7 +102,8 @@ public class HomeForm extends Form {
         Button btnListEvents = new Button("Events");
         Button btnListOrders = new Button("My Orders");
         Button btnListExpos = new Button("Expositions");
-
+          Button btnAddOeuvre = new Button ("ADD OEUVRE");
+        Button btnListOeuvres = new Button ("OEUVRE LIST");
         
         btnListEvents.addActionListener(e -> {
             
@@ -133,8 +134,19 @@ public class HomeForm extends Form {
             }
             
         });
+   
+   btnAddOeuvre.addActionListener(e -> new AddOeuvreForm(current).show());
+        btnListOeuvres.addActionListener(e -> {
+            
+            try {
+                new ListOeuvreForm(current).show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            
+        });
         
-        addAll(btnListEvents,btnListOrders,btnListExpos);
+        addAll(btnListEvents,btnListOrders,btnListExpos,btnAddOeuvre,btnListOeuvres);
                     Date d=new Date(2000-02-24);
                   
                     User u = new User (14,"tfifha","youssef",d,"ezzahra","youssef.tfifha@esprit.tn",20245989,"Homme");

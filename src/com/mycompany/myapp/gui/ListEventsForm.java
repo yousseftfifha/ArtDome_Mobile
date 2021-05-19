@@ -141,7 +141,7 @@ public class ListEventsForm extends HomeForm{
            EncodedImage enc;
            enc = EncodedImage.create("/faza.jpg");
            enc.scale(570,620);
-           String url="http://127.0.0.1:8282/ArtDomeWeb/public/pi/"+ev.getImage();
+           String url="http://localhost:8080/ArtDome_WEB/public/pi/"+ev.getImage();
            img =URLImage.createToStorage(enc, url, url);
            img.scaledHeight(1);
            img.fill(570,620);
