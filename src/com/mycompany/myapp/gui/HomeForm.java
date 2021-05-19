@@ -175,7 +175,11 @@ public class HomeForm extends Form {
         Button btnListExpos = new Button("Expositions");
           Button btnAddOeuvre = new Button ("Add Artwork");
         Button btnListOeuvres = new Button ("Artwork ");
-        
+        Button btnListEndroit = new Button("Endroits");
+        Button btnListUser = new Button("Users");
+
+         Button btnAddBlog = new Button("Add Blog");
+        Button btnListBlogs = new Button("List Blogs");
         btnListEvents.addActionListener(e -> {
             
             try {
@@ -216,8 +220,35 @@ public class HomeForm extends Form {
             }
             
         });
-        
-        addAll(btnListEvents,btnListOrders,btnListExpos,btnAddOeuvre,btnListOeuvres);
+        btnAddBlog.addActionListener(e -> new AddBlogForm(current).show());
+        btnListBlogs.addActionListener(e -> {
+            
+            try {
+                new ListBlogsForm(current).show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            
+        });
+       btnListEndroit.addActionListener(e -> {
+            
+            try {
+                new ListEndroitForm(current,res).show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            
+        });
+         btnListUser.addActionListener(e -> {
+            
+            try {
+                new ListUserForm(current,res).show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            
+        });
+        addAll(btnListEvents,btnListOrders,btnListExpos,btnAddOeuvre,btnListOeuvres,btnAddBlog,btnListBlogs,btnListEndroit,btnListUser);
                     Date d=new Date(2000-02-24);
                   
                     User u = new User (14,"tfifha","youssef",d,"ezzahra","youssef.tfifha@esprit.tn",20245989,"Homme");
