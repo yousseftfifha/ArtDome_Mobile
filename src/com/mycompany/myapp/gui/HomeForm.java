@@ -97,14 +97,13 @@ public class HomeForm extends Form {
         current = this; //Récupération de l'interface(Form) en cours
         setTitle("Home");
         setLayout(BoxLayout.y());
-
         add(new Label("Choose an option"));
-        Button btnAddEvent = new Button("Add Event");
-        Button btnListEvents = new Button("List Events");
-        Button btnListEventsB = new Button("List Events Back");
+       
+        Button btnListEvents = new Button("Events");
         Button btnListOrders = new Button("My Orders");
+        Button btnListExpos = new Button("Expositions");
 
-        btnAddEvent.addActionListener(e -> new AddEventForm(current).show());
+        
         btnListEvents.addActionListener(e -> {
             
             try {
@@ -114,15 +113,7 @@ public class HomeForm extends Form {
             }
             
         });
-        btnListEventsB.addActionListener(e -> {
-            
-            try {
-                new ListEventsBackForm(current,res).show();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-            
-        });
+       
         btnListOrders.addActionListener(e -> {
             
             try {
@@ -133,7 +124,17 @@ public class HomeForm extends Form {
             
         });
         
-        addAll(btnAddEvent, btnListEvents,btnListEventsB,btnListOrders);
+            btnListExpos.addActionListener(e -> {
+            
+            try {
+                new ListExposForm(current,res).show();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            
+        });
+        
+        addAll(btnListEvents,btnListOrders,btnListExpos);
                     Date d=new Date(2000-02-24);
                   
                     User u = new User (14,"tfifha","youssef",d,"ezzahra","youssef.tfifha@esprit.tn",20245989,"Homme");
