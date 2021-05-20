@@ -9,119 +9,119 @@ import java.util.Date;
 
 /**
  *
- * @author user
+ * @author yotfi
  */
 public class Oeuvre {
-    private int idOeuvre;
-    private String nomoeuvre;
-    private float prixoeuvre ;
-    private Date dateoeuvre;
-    private String imageoeuvre;
-    private String nomcat;
-    private String emailartiste ;
-    private int idArtiste;
+    private int ID_Oeuvre;
+    private String NomOeuvre;
+    private float PrixOeuvre;
+    private String ImageOeuvre;
+    private int NomCat;
+    private Date DateOeuvre;
+    private  String EmailArtiste;
+    private String color;
+    private int code_exposition;
+    private int ID_Artiste;
 
     public Oeuvre() {
     }
 
-    public Oeuvre(String nomoeuvre, float prixoeuvre, Date dateoeuvre, String imageoeuvre, String nomcat, String emailartiste, int idArtiste) {
-        this.nomoeuvre = nomoeuvre;
-        this.prixoeuvre = prixoeuvre;
-        this.dateoeuvre = dateoeuvre;
-        this.imageoeuvre = imageoeuvre;
-        this.nomcat = nomcat;
-        this.emailartiste = emailartiste;
-        this.idArtiste = idArtiste;
+    public Oeuvre(int ID_Oeuvre, String NomOeuvre, float PrixOeuvre, String ImageOeuvre, int NomCat, Date DateOeuvre, String EmailArtiste, String color, int code_exposition, int ID_Artiste) {
+        this.ID_Oeuvre = ID_Oeuvre;
+        this.NomOeuvre = NomOeuvre;
+        this.PrixOeuvre = PrixOeuvre;
+        this.ImageOeuvre = ImageOeuvre;
+        this.NomCat = NomCat;
+        this.DateOeuvre = DateOeuvre;
+        this.EmailArtiste = EmailArtiste;
+        this.color = color;
+        this.code_exposition = code_exposition;
+        this.ID_Artiste = ID_Artiste;
     }
 
-    public Oeuvre(int idOeuvre, String nomoeuvre, float prixoeuvre, Date dateoeuvre, String imageoeuvre, String nomcat, String emailartiste, int idArtiste) {
-        this.idOeuvre = idOeuvre;
-        this.nomoeuvre = nomoeuvre;
-        this.prixoeuvre = prixoeuvre;
-        this.dateoeuvre = dateoeuvre;
-        this.imageoeuvre = imageoeuvre;
-        this.nomcat = nomcat;
-        this.emailartiste = emailartiste;
-        this.idArtiste = idArtiste;
+    public int getID_Oeuvre() {
+        return ID_Oeuvre;
     }
 
-    public Oeuvre(int parseInt, String text, String text0, String text1) {
-       
+    public void setID_Oeuvre(int ID_Oeuvre) {
+        this.ID_Oeuvre = ID_Oeuvre;
     }
 
-    public int getIdOeuvre() {
-        return idOeuvre;
+    public String getNomOeuvre() {
+        return NomOeuvre;
     }
 
-    public void setIdOeuvre(int idOeuvre) {
-        this.idOeuvre = idOeuvre;
+    public void setNomOeuvre(String NomOeuvre) {
+        this.NomOeuvre = NomOeuvre;
     }
 
-    public String getNomoeuvre() {
-        return nomoeuvre;
+    public float getPrixOeuvre() {
+        return PrixOeuvre;
     }
 
-    public void setNomoeuvre(String nomoeuvre) {
-        this.nomoeuvre = nomoeuvre;
+    public void setPrixOeuvre(float PrixOeuvre) {
+        this.PrixOeuvre = PrixOeuvre;
     }
 
-    public float getPrixoeuvre() {
-        return prixoeuvre;
+    public String getImageOeuvre() {
+        return ImageOeuvre;
     }
 
-    public void setPrixoeuvre(float prixoeuvre) {
-        this.prixoeuvre = prixoeuvre;
+    public void setImageOeuvre(String ImageOeuvre) {
+        this.ImageOeuvre = ImageOeuvre;
     }
 
-    public Date getDateoeuvre() {
-        return dateoeuvre;
+    public int getNomCat() {
+        return NomCat;
     }
 
-    public void setDateoeuvre(Date dateoeuvre) {
-        this.dateoeuvre = dateoeuvre;
+    public void setNomCat(int NomCat) {
+        this.NomCat = NomCat;
     }
 
-    public String getImageoeuvre() {
-        return imageoeuvre;
+    public Date getDateOeuvre() {
+        return DateOeuvre;
     }
 
-    public void setImageoeuvre(String imageoeuvre) {
-        this.imageoeuvre = imageoeuvre;
+    public void setDateOeuvre(Date DateOeuvre) {
+        this.DateOeuvre = DateOeuvre;
     }
 
-    public String getNomcat() {
-        return nomcat;
+    public String getEmailArtiste() {
+        return EmailArtiste;
     }
 
-    public void setNomcat(String nomcat) {
-        this.nomcat = nomcat;
+    public void setEmailArtiste(String EmailArtiste) {
+        this.EmailArtiste = EmailArtiste;
     }
 
-    public String getEmailartiste() {
-        return emailartiste;
+    public String getColor() {
+        return color;
     }
 
-    public void setEmailartiste(String emailartiste) {
-        this.emailartiste = emailartiste;
+    public void setColor(String color) {
+        this.color = color;
     }
 
-    public int getIdArtiste() {
-        return idArtiste;
+    public int getCode_exposition() {
+        return code_exposition;
     }
 
-    public void setIdArtiste(int idArtiste) {
-        this.idArtiste = idArtiste;
+    public void setCode_exposition(int code_exposition) {
+        this.code_exposition = code_exposition;
+    }
+
+    public int getID_Artiste() {
+        return ID_Artiste;
+    }
+
+    public void setID_Artiste(int ID_Artiste) {
+        this.ID_Artiste = ID_Artiste;
     }
 
     @Override
     public String toString() {
-        return "Oeuvre{" + "idOeuvre=" + idOeuvre + ", nomoeuvre=" + nomoeuvre + ", prixoeuvre=" + prixoeuvre + ", dateoeuvre=" + dateoeuvre + ", imageoeuvre=" + imageoeuvre + ", nomcat=" + nomcat + ", emailartiste=" + emailartiste + ", idArtiste=" + idArtiste + '}';
+        return "Oeuvre{" + "ID_Oeuvre=" + ID_Oeuvre + ", NomOeuvre=" + NomOeuvre + ", PrixOeuvre=" + PrixOeuvre + ", ImageOeuvre=" + ImageOeuvre + ", NomCat=" + NomCat + ", DateOeuvre=" + DateOeuvre + ", EmailArtiste=" + EmailArtiste + ", color=" + color + ", code_exposition=" + code_exposition + ", ID_Artiste=" + ID_Artiste + '}';
     }
-
-       
+    
 }
-
-
-
-
-  
