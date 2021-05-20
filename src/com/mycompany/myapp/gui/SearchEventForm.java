@@ -115,7 +115,7 @@ public class SearchEventForm extends HomeForm{
            EncodedImage enc;
            enc = EncodedImage.create("/faza.jpg");
            enc.scale(570,620);
-           String url="http://127.0.0.1:8080/ArtDome_WEB/public/pi/"+ev.getImage();
+           String url="http://127.0.0.1:8282/ArtDomeWeb/public/pi/"+ev.getImage();
            img =URLImage.createToStorage(enc, url, url);
            img.scaledHeight(1);
            img.fill(570,620);
@@ -143,11 +143,12 @@ public class SearchEventForm extends HomeForm{
                 Button partager = new Button();
                 partager.setIcon(FontImage.createMaterial(FontImage.MATERIAL_SHARE, partager.getUnselectedStyle()));
                 partager.addActionListener((evtt)->{
-                Display.getInstance().execute("https://www.facebook.com/sharer/sharer.php/?u=127.0.0.1:8001/event/"+ev.getCodeEvent());
+                Display.getInstance().execute("https://www.facebook.com/sharer/sharer.php/?u=127.0.0.1:8000/event/"+ev.getCodeEvent());
                  });
        addAll(imgv,spl,spl2,spl3,spl5,sup,partager);
         
         }
+        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
     }
     
      private void addTab(Tabs swipe, Image img, Label spacer) {

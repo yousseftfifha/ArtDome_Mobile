@@ -150,7 +150,7 @@ public class ListExposForm extends HomeForm{
         } catch(IOException err) {
             Log.e(err);
         }*/
-            Image img1 = Image.createImage("/faza.jpg");
+            Image img1 = Image.createImage("/Art.jpg");
             i.setIcon(img1);
                 
                 SpanLabel spl = new SpanLabel("Expo name: " + "  " + ev.getNomExpo());
